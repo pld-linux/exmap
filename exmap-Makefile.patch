@@ -50,7 +50,7 @@ diff -Nur o.exmap-0.10/src/Makefile n.exmap-0.10/src/Makefile
  
 -CXXFLAGS += -g -Wall -Werror -I$(JUTILDIR)
 -LDFLAGS += -lpcre -ljutil -L$(JUTILDIR)
-+override CXXFLAGS += -Wall -Werror -I$(JUTILDIR)
++override CXXFLAGS += -Wall -I$(JUTILDIR)
 +override LDFLAGS += -lpcre -L$(JUTILDIR) -ljutil
  
  GTKCXXFLAGS = `pkg-config --cflags gtkmm-2.4`

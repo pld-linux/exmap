@@ -1,0 +1,68 @@
+diff -Nur o.exmap-0.10/Makefile n.exmap-0.10/Makefile
+--- o.exmap-0.10/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ n.exmap-0.10/Makefile	2007-02-10 12:11:35.000000000 +0100
+@@ -4,7 +4,7 @@
+ 
+ # Note this is the build order, and reflects inter-subdir
+ # dependencies.
+-SUBDIRS=kernel jutil src tools
++SUBDIRS=jutil src tools
+ 
+ .PHONY: build clean test $(SUBDIRS)
+ 
+diff -Nur o.exmap-0.10/jutil/Makefile n.exmap-0.10/jutil/Makefile
+--- o.exmap-0.10/jutil/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ n.exmap-0.10/jutil/Makefile	2007-02-10 15:34:58.000000000 +0100
+@@ -11,16 +11,14 @@
+ ETOBJ = egtest.o
+ OBJ += $(ETOBJ)
+ EXES += egtest
+-
+-CXX=g++
+-CXXFLAGS=-Wall -Werror -g -I.
+-LD=g++
+-LDFLAGS=-lpcre
++override CXXFLAGS += -Wall -Werror -I.
++LD=$(CXX)
++override LDFLAGS += -lpcre
+ 
+ build: $(LIBS) $(EXES)
+ 
+ trun: $(TROBJ) $(JLIB)
+-	$(LD) $(TROBJ) -o trun $(LDFLAGS) -ljutil -L.
++	$(LD) $(TROBJ) -o trun $(LDFLAGS) -L. -ljutil
+ 
+ $(JLIB): $(JOBJ)
+ 	ar rs $(JLIB) $(JOBJ)
+diff -Nur o.exmap-0.10/src/Makefile n.exmap-0.10/src/Makefile
+--- o.exmap-0.10/src/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ n.exmap-0.10/src/Makefile	2007-02-10 15:38:04.000000000 +0100
+@@ -1,5 +1,5 @@
+ CXX=g++
+-LD=g++
++LD=$(CXX)
+ JUTILDIR=../jutil
+ 
+ #CXXFLAGS += -pg
+@@ -11,8 +11,8 @@
+ 
+ EXMAP_OBJ=Exmap.o Range.o Elf.o
+ 
+-CXXFLAGS += -g -Wall -Werror -I$(JUTILDIR)
+-LDFLAGS += -lpcre -ljutil -L$(JUTILDIR)
++override CXXFLAGS += -Wall -Werror -I$(JUTILDIR)
++override LDFLAGS += -lpcre -L$(JUTILDIR) -ljutil
+ 
+ GTKCXXFLAGS = `pkg-config --cflags gtkmm-2.4`
+ GTKLDFLAGS = `pkg-config --libs gtkmm-2.4`
+diff -Nur o.exmap-0.10/tools/Makefile n.exmap-0.10/tools/Makefile
+--- o.exmap-0.10/tools/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ n.exmap-0.10/tools/Makefile	2007-02-10 15:38:38.000000000 +0100
+@@ -1,6 +1,6 @@
+ 
+ # Some of what we build goes into shared libs, so play safe
+-CFLAGS=-fPIC
++override CFLAGS += -fPIC
+ 
+ TS_OBJ = mapper.o
+ EXES += mapper

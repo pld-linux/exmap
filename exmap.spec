@@ -22,19 +22,16 @@ Group:		Applications/System
 Source0:	http://www.berthels.co.uk/exmap/download/%{name}-%{version}.tgz
 # Source0-md5:	b4f87fa02f6a218416b77ad4b9f48d74
 Patch0:		%{name}-Makefile.patch
+Patch1:		%{name}-vserver.patch
 URL:		http://www.berthels.co.uk/exmap/
 %if %{with kernel}
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.14}
 BuildRequires:	rpmbuild(macros) >= 1.330
 %endif
-#BuildRequires:	-
-#Requires(postun):	-
-#Requires(pre,post):	-
-#Requires(preun):	-
-#Requires:	-
-#Provides:	-
-#Obsoletes:	-
-#Conflicts:	-
+%if %{with userspace}
+BuildRequires:	boost-devel
+BuildRequires:	pcre-devel
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -93,6 +90,7 @@ Ten pakiet zawiera modu³ j±dra Linuksa SMP.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 # remove binaries packed in src tarball
 rm -f src/{*.so,munged-ls-threeloads,prelinked-amule}
 

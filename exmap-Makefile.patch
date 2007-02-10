@@ -22,7 +22,7 @@ diff -Nur o.exmap-0.10/jutil/Makefile n.exmap-0.10/jutil/Makefile
 -CXXFLAGS=-Wall -Werror -g -I.
 -LD=g++
 -LDFLAGS=-lpcre
-+override CXXFLAGS += -Wall -Werror -I.
++override CXXFLAGS += -Wall -I.
 +LD=$(CXX)
 +override LDFLAGS += -lpcre
  

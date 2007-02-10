@@ -10,7 +10,7 @@
 %undefine	with_dist_kernel
 %endif
 
-%define		_rel	0.1
+%define		_rel	0.2
 Summary:	Determine how much physical memory and swap is used by individual processes
 Summary(pl):	Narzêdzie do analizowania zu¿ycia pamiêci fizycznej i wymiany przez poszczególne procesy
 Name:		exmap
@@ -30,6 +30,8 @@ BuildRequires:	rpmbuild(macros) >= 1.330
 %endif
 %if %{with userspace}
 BuildRequires:	boost-devel
+BuildRequires:	gtkmm-devel
+BuildRequires:	libstdc++-devel >= 4.1.1
 BuildRequires:	pcre-devel
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

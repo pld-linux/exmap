@@ -10,7 +10,7 @@
 %undefine	with_dist_kernel
 %endif
 
-%define		_rel	0.2
+%define		_rel	1
 Summary:	Determine how much physical memory and swap is used by individual processes
 Summary(pl):	Narzêdzie do analizowania zu¿ycia pamiêci fizycznej i wymiany przez poszczególne procesy
 Name:		exmap
@@ -43,7 +43,12 @@ export information to userspace, which is examined by a gtk
 application to build a picture of how pages are shared amongst
 processes and their shared libraries.
 
-#%description -l pl
+%description -l pl
+Exmap jest narzêdziem pozwalaj±cym badaæ realne u¿ycie pamiêci przez
+zbiór procesów. Modu³ kernela jest u¿ywany do eksportowania
+informacji do przestrzeni u¿ytkownika, które s± analizowane przez
+aplikacjê gtk do zobrazowania jak wiele stron jest wspó³dzielonych
+miêdzy procesami i ich bibliotekami dzielonymi.
 
 # kernel subpackages.
 

@@ -12,7 +12,7 @@
 
 %define		_rel	1
 Summary:	Determine how much physical memory and swap is used by individual processes
-Summary(pl):	Narzêdzie do analizowania zu¿ycia pamiêci fizycznej i wymiany przez poszczególne procesy
+Summary(pl.UTF-8):   NarzÄ™dzie do analizowania zuÅ¼ycia pamiÄ™ci fizycznej i wymiany przez poszczegÃ³lne procesy
 Name:		exmap
 Version:	0.10
 Release:	%{_rel}
@@ -43,18 +43,18 @@ export information to userspace, which is examined by a gtk
 application to build a picture of how pages are shared amongst
 processes and their shared libraries.
 
-%description -l pl
-Exmap jest narzêdziem pozwalaj±cym badaæ realne u¿ycie pamiêci przez
-zbiór procesów. Modu³ kernela jest u¿ywany do eksportowania
-informacji do przestrzeni u¿ytkownika, które s± analizowane przez
-aplikacjê gtk do zobrazowania jak wiele stron jest wspó³dzielonych
-miêdzy procesami i ich bibliotekami dzielonymi.
+%description -l pl.UTF-8
+Exmap jest narzÄ™dziem pozwalajÄ…cym badaÄ‡ realne uÅ¼ycie pamiÄ™ci przez
+zbiÃ³r procesÃ³w. ModuÅ‚ kernela jest uÅ¼ywany do eksportowania
+informacji do przestrzeni uÅ¼ytkownika, ktÃ³re sÄ… analizowane przez
+aplikacjÄ™ gtk do zobrazowania jak wiele stron jest wspÃ³Å‚dzielonych
+miÄ™dzy procesami i ich bibliotekami dzielonymi.
 
 # kernel subpackages.
 
 %package -n kernel%{_alt_kernel}-misc-exmap
 Summary:	Linux driver for exmap
-Summary(pl):	Sterownik dla Linuksa do exmap
+Summary(pl.UTF-8):   Sterownik dla Linuksa do exmap
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -68,14 +68,14 @@ This is driver for exmap for Linux.
 
 This package contains Linux module.
 
-%description -n kernel%{_alt_kernel}-misc-exmap -l pl
+%description -n kernel%{_alt_kernel}-misc-exmap -l pl.UTF-8
 Sterownik dla Linuksa do exmap.
 
-Ten pakiet zawiera modu³ j±dra Linuksa.
+Ten pakiet zawiera moduÅ‚ jÄ…dra Linuksa.
 
 %package -n kernel%{_alt_kernel}-smp-misc-exmap
 Summary:	Linux SMP driver for exmap
-Summary(pl):	Sterownik dla Linuksa SMP do exmap
+Summary(pl.UTF-8):   Sterownik dla Linuksa SMP do exmap
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -89,10 +89,10 @@ This is driver for exmap for Linux.
 
 This package contains Linux SMP module.
 
-%description -n kernel%{_alt_kernel}-smp-misc-exmap -l pl
+%description -n kernel%{_alt_kernel}-smp-misc-exmap -l pl.UTF-8
 Sterownik dla Linuksa do exmap.
 
-Ten pakiet zawiera modu³ j±dra Linuksa SMP.
+Ten pakiet zawiera moduÅ‚ jÄ…dra Linuksa SMP.
 
 %prep
 %setup -q

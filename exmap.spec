@@ -12,7 +12,7 @@
 
 %define		_rel	1
 Summary:	Determine how much physical memory and swap is used by individual processes
-Summary(pl.UTF-8):   Narzędzie do analizowania zużycia pamięci fizycznej i wymiany przez poszczególne procesy
+Summary(pl.UTF-8):	Narzędzie do analizowania zużycia pamięci fizycznej i wymiany przez poszczególne procesy
 Name:		exmap
 Version:	0.10
 Release:	%{_rel}
@@ -54,7 +54,7 @@ między procesami i ich bibliotekami dzielonymi.
 
 %package -n kernel%{_alt_kernel}-misc-exmap
 Summary:	Linux driver for exmap
-Summary(pl.UTF-8):   Sterownik dla Linuksa do exmap
+Summary(pl.UTF-8):	Sterownik dla Linuksa do exmap
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -75,7 +75,7 @@ Ten pakiet zawiera moduł jądra Linuksa.
 
 %package -n kernel%{_alt_kernel}-smp-misc-exmap
 Summary:	Linux SMP driver for exmap
-Summary(pl.UTF-8):   Sterownik dla Linuksa SMP do exmap
+Summary(pl.UTF-8):	Sterownik dla Linuksa SMP do exmap
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod

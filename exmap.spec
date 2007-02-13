@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	kernel		# don't build kernel modules
@@ -39,7 +40,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Exmap is a tool which allows the real memory usage of a collection of
 processes to be examined. A linux kernel loadable module is used to
-export information to userspace, which is examined by a gtk
+export information to userspace, which is examined by a GTK+
 application to build a picture of how pages are shared amongst
 processes and their shared libraries.
 
@@ -47,7 +48,7 @@ processes and their shared libraries.
 Exmap jest narzędziem pozwalającym badać realne użycie pamięci przez
 zbiór procesów. Moduł kernela jest używany do eksportowania
 informacji do przestrzeni użytkownika, które są analizowane przez
-aplikację gtk do zobrazowania jak wiele stron jest współdzielonych
+aplikację GTK+ do zobrazowania jak wiele stron jest współdzielonych
 między procesami i ich bibliotekami dzielonymi.
 
 # kernel subpackages.

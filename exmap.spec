@@ -2,8 +2,6 @@
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	kernel		# don't build kernel modules
-%bcond_without	up		# don't build UP module
-%bcond_without	smp		# don't build SMP module
 %bcond_without	userspace	# don't build userspace programs
 %bcond_with	verbose		# verbose build (V=1)
 
@@ -60,8 +58,8 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
 %if %{with dist_kernel}
-%requires_releq_kernel_up
-Requires(postun):	%releq_kernel_up
+%requires_releq_kernel
+Requires(postun):	%releq_kernel
 %endif
 
 %description -n kernel%{_alt_kernel}-misc-exmap
@@ -73,27 +71,6 @@ This package contains Linux module.
 Sterownik dla Linuksa do exmap.
 
 Ten pakiet zawiera moduł jądra Linuksa.
-
-%package -n kernel%{_alt_kernel}-smp-misc-exmap
-Summary:	Linux SMP driver for exmap
-Summary(pl.UTF-8):	Sterownik dla Linuksa SMP do exmap
-Release:	%{_rel}@%{_kernel_ver_str}
-Group:		Base/Kernel
-Requires(post,postun):	/sbin/depmod
-%if %{with dist_kernel}
-%requires_releq_kernel_smp
-Requires(postun):	%releq_kernel_smp
-%endif
-
-%description -n kernel%{_alt_kernel}-smp-misc-exmap
-This is driver for exmap for Linux.
-
-This package contains Linux SMP module.
-
-%description -n kernel%{_alt_kernel}-smp-misc-exmap -l pl.UTF-8
-Sterownik dla Linuksa do exmap.
-
-Ten pakiet zawiera moduł jądra Linuksa SMP.
 
 %prep
 %setup -q
@@ -144,25 +121,12 @@ rm -rf $RPM_BUILD_ROOT
 %postun	-n kernel%{_alt_kernel}-misc-exmap
 %depmod %{_kernel_ver}
 
-%post	-n kernel%{_alt_kernel}-smp-misc-exmap
-%depmod %{_kernel_ver}smp
-
-%postun	-n kernel%{_alt_kernel}-smp-misc-exmap
-%depmod %{_kernel_ver}smp
-
 %if %{with kernel}
-%if %{with up} || %{without dist_kernel}
 %files -n kernel%{_alt_kernel}-misc-exmap
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}/misc/*.ko*
 %endif
 
-%if %{with smp} && %{with dist_kernel}
-%files -n kernel%{_alt_kernel}-smp-misc-exmap
-%defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}smp/misc/*.ko*
-%endif
-%endif
 
 %if %{with userspace}
 %files

@@ -74,8 +74,8 @@ Ten pakiet zawiera moduł jądra Linuksa.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 # remove binaries packed in src tarball
 rm -f src/{*.so,munged-ls-threeloads,prelinked-amule}
 
